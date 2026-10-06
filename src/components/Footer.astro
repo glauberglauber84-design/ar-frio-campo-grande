@@ -1,0 +1,49 @@
+---
+import { siteConfig } from '../config/siteConfig';
+import { formatAddress, formatPhone } from '../lib/format';
+import { loadLocais, pathOf } from '../lib/locais';
+import { waLink } from '../lib/whatsapp';
+
+const servicos = loadLocais();
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-ink text-slate-200">
+  <div class="container-x grid gap-10 py-12 md:grid-cols-3">
+    <div>
+      <p class="text-xl font-bold text-white">{siteConfig.name}</p>
+      <p class="mt-3 max-w-xs text-slate-300">
+        Instalação, manutenção e higienização de ar-condicionado para casas e empresas em {siteConfig.address.city}-{siteConfig.address.state}.
+      </p>
+    </div>
+
+    <nav aria-label="Serviços e páginas">
+      <p class="font-semibold text-white">Serviços</p>
+      <ul class="mt-3 space-y-1">
+        {servicos.map((s) => (
+          <li><a href={pathOf(s)} class="flex min-h-touch items-center text-slate-200 underline-offset-4 hover:text-white hover:underline md:min-h-0 md:py-1">{s.servicoLabel}</a></li>
+        ))}
+      </ul>
+      <ul class="mt-4 flex flex-wrap gap-x-5">
+        <li><a href="/sobre/" class="flex min-h-touch items-center underline-offset-4 hover:text-white hover:underline">Sobre</a></li>
+        <li><a href="/contato/" class="flex min-h-touch items-center underline-offset-4 hover:text-white hover:underline">Contato</a></li>
+        <li><a href="/politica-de-privacidade/" class="flex min-h-touch items-center underline-offset-4 hover:text-white hover:underline">Política de privacidade</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <p class="font-semibold text-white">Contato</p>
+      <address class="mt-3 space-y-2 not-italic">
+        <p>{formatAddress()}</p>
+        <p>
+          <a href={`tel:${siteConfig.phoneE164}`} class="font-semibold text-white underline underline-offset-4">{formatPhone()}</a>
+        </p>
+        <p>{siteConfig.openingHours}</p>
+      </address>
+      <a href={waLink('Olá! Vim pelo site e gostaria de um orçamento de ar-condicionado.')} target="_blank" rel="noopener" class="btn-wa mt-4">Chamar no WhatsApp</a>
+    </div>
+  </div>
+  <div class="border-t border-slate-700">
+    <p class="container-x py-4 text-sm text-slate-300">© {year} {siteConfig.name}. Todos os direitos reservados.</p>
+  </div>
+</footer>

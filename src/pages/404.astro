@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import { siteConfig } from '../config/siteConfig';
+import { localBusinessLd } from '../lib/schema';
+import { waLink } from '../lib/whatsapp';
+---
+
+<BaseLayout
+  title={`Página não encontrada | ${siteConfig.name}`}
+  description="A página que você procura não existe. Veja nossos serviços de ar-condicionado em Campo Grande-MS ou fale conosco."
+  path="/404/"
+  noindex
+  jsonLd={[localBusinessLd()]}
+>
+  <section class="section-y">
+    <div class="container-x text-center">
+      <p class="font-bold text-accent-strong">Erro 404</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Página não encontrada</h1>
+      <p class="prose-x mx-auto mt-4">O endereço pode ter mudado ou estar incorreto. Volte ao início ou escolha um serviço abaixo.</p>
+      <div class="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+        <a href="/" class="btn-brand">Voltar ao início</a>
+        <a href={waLink('Olá! Preciso de ajuda com ar-condicionado.')} target="_blank" rel="noopener" class="btn-wa">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+  <ServiceGrid />
+</BaseLayout>

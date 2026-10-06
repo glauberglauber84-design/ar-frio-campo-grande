@@ -1,0 +1,26 @@
+---
+import type { FaqItem } from '../types';
+
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+}
+const { items, heading = 'Perguntas frequentes' } = Astro.props;
+---
+
+<section class="section-y">
+  <div class="container-x max-w-3xl">
+    <h2 class="h2">{heading}</h2>
+    <div class="mt-6 space-y-3">
+      {items.map((q) => (
+        <details class="group rounded-xl border border-line bg-white">
+          <summary class="flex min-h-touch cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+            <span>{q.pergunta}</span>
+            <span aria-hidden="true" class="text-xl text-accent-strong transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="px-4 pb-4 text-ink">{q.resposta}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

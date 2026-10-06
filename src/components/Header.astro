@@ -1,0 +1,75 @@
+---
+import { siteConfig } from '../config/siteConfig';
+import { formatPhone } from '../lib/format';
+import { waLink } from '../lib/whatsapp';
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/#servicos', label: 'Serviços' },
+  { href: '/sobre/', label: 'Sobre' },
+  { href: '/contato/', label: 'Contato' },
+];
+const wa = waLink('Olá! Vim pelo site e gostaria de um orçamento de ar-condicionado.');
+---
+
+<header class="sticky top-0 z-30 border-b border-line bg-white/95 backdrop-blur">
+  <div class="container-x flex min-h-16 items-center justify-between gap-3">
+    <a href="/" class="flex min-h-touch items-center gap-2 text-lg font-bold text-accent-strong" aria-label={`${siteConfig.name}, página inicial`}>
+      <svg viewBox="0 0 64 64" width="32" height="32" aria-hidden="true" focusable="false">
+        <rect width="64" height="64" rx="14" fill="#0277bd"></rect>
+        <g stroke="#fff" stroke-width="5" stroke-linecap="round"><path d="M32 12v40M14.700 22l34.600 20M14.700 42l34.600-20"></path></g>
+      </svg>
+      <span>{siteConfig.name}</span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden items-center gap-1 md:flex">
+      {nav.map((n) => (
+        <a href={n.href} class="flex min-h-touch items-center rounded-lg px-3 font-semibold text-ink hover:bg-ice hover:text-accent-strong">{n.label}</a>
+      ))}
+      <a href={wa} target="_blank" rel="noopener" class="btn-wa ml-2" aria-label={`Chamar no WhatsApp ${formatPhone()}`}>
+        WhatsApp {formatPhone()}
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="flex h-11 w-11 items-center justify-center rounded-lg border border-line text-ink md:hidden"
+      aria-expanded="false"
+      aria-controls="menu-mobile"
+      aria-label="Abrir menu"
+    >
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" aria-hidden="true" focusable="false">
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <nav id="menu-mobile" aria-label="Menu mobile" class="hidden border-t border-line bg-white md:hidden">
+    <ul class="container-x flex flex-col py-2">
+      {nav.map((n) => (
+        <li><a href={n.href} class="flex min-h-touch items-center font-semibold text-ink">{n.label}</a></li>
+      ))}
+      <li class="py-2"><a href={wa} target="_blank" rel="noopener" class="btn-wa w-full">WhatsApp {formatPhone()}</a></li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu-mobile');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
+      menu.classList.toggle('hidden', open);
+    });
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        btn.click();
+        btn.focus();
+      }
+    });
+  }
+</script>

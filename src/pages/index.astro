@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import About from '../components/About.astro';
+import FindUs from '../components/FindUs.astro';
+import PostGrid from '../components/PostGrid.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { siteConfig } from '../config/siteConfig';
+import { localBusinessLd, websiteLd } from '../lib/schema';
+
+const title = `Ar-condicionado em Campo Grande-MS: instalação e manutenção | ${siteConfig.name}`;
+const description =
+  'Instalação, manutenção, limpeza e conserto de ar-condicionado em Campo Grande-MS. Atendemos casas e empresas. Peça seu orçamento pelo WhatsApp.';
+---
+
+<BaseLayout title={title} description={description} path="/" jsonLd={[websiteLd(), localBusinessLd()]}>
+  <Hero
+    h1="Instalação e manutenção de ar-condicionado em Campo Grande"
+    subtitle="Técnico qualificado, orçamento rápido pelo WhatsApp e atendimento em toda Campo Grande-MS."
+    eyebrow="Atendimento em Campo Grande-MS"
+  />
+  <ServiceGrid />
+  <About />
+  <FindUs />
+  <PostGrid />
+  <section id="contato" class="section-y">
+    <div class="container-x grid gap-8 md:grid-cols-2">
+      <div>
+        <h2 class="h2">Peça seu orçamento</h2>
+        <p class="prose-x mt-3">Conte o que você precisa. Abrimos o WhatsApp com a mensagem pronta e respondemos o quanto antes.</p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+</BaseLayout>

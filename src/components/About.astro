@@ -1,0 +1,22 @@
+---
+import { siteConfig } from '../config/siteConfig';
+---
+
+<section class="section-y bg-surface">
+  <div class="container-x grid gap-8 md:grid-cols-2 md:items-center">
+    <div>
+      <h2 class="h2">Sobre a {siteConfig.name}</h2>
+      <p class="prose-x mt-4">
+        Somos uma empresa de {siteConfig.address.city}-{siteConfig.address.state} focada em instalação e manutenção de ar-condicionado. Atendemos residências, comércios e empresas com técnico qualificado, orientação clara e orçamento sem enrolação.
+      </p>
+      <p class="prose-x mt-3">Responsável técnico: {siteConfig.responsavel}.</p>
+      <a href="/sobre/" class="btn-outline mt-6">Conheça nossa história</a>
+    </div>
+    <ul class="grid gap-3 sm:grid-cols-2">
+      <li class="card"><p class="font-semibold text-accent-strong">Orçamento rápido</p><p class="mt-1 text-muted">Orçamento no mesmo dia, por foto, vídeo ou visita no local.</p></li>
+      <li class="card"><p class="font-semibold text-accent-strong">Técnico qualificado</p><p class="mt-1 text-muted">Serviço com garantia e teste de vazamento.</p></li>
+      <li class="card"><p class="font-semibold text-accent-strong">Atendimento local</p><p class="mt-1 text-muted">Presentes nos bairros de Campo Grande.</p></li>
+      <li class="card"><p class="font-semibold text-accent-strong">Casa e empresa</p><p class="mt-1 text-muted">Do split residencial à manutenção recorrente para empresas.</p></li>
+    </ul>
+  </div>
+</section>

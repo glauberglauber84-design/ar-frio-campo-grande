@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.mjs';
+
+/* Fontes self-hosted (Inter, subset latin: cobre acentos do pt-BR). Sem Google Fonts. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: #0f172a;
+    background: #fff;
+    line-height: 1.6;
+  }
+  :focus-visible {
+    outline: 3px solid #01579b;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .on-dark :focus-visible,
+  .bg-brand :focus-visible,
+  .bg-brand-dark :focus-visible {
+    outline-color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+}
+
+@utility container-x {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+@utility section-y {
+    @apply py-12 md:py-20;
+  }
+@utility btn {
+    @apply inline-flex min-h-touch items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-semibold transition-colors;
+  }
+@utility btn-wa {
+    @apply btn bg-wa text-white hover:bg-wa-dark;
+  }
+@utility btn-brand {
+    @apply btn bg-brand text-white hover:bg-brand-dark;
+  }
+@utility btn-ghost {
+    @apply btn border-2 border-white text-white hover:bg-white hover:text-brand-dark;
+  }
+@utility btn-outline {
+    @apply btn border-2 border-brand-dark text-accent-strong hover:bg-brand-dark hover:text-white;
+  }
+@utility card {
+    @apply rounded-xl border border-line bg-white p-5 shadow-sm transition-shadow hover:shadow-md;
+  }
+@utility h2 {
+    @apply text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl;
+  }
+@utility prose-x {
+    @apply max-w-prose text-lg text-ink;
+  }

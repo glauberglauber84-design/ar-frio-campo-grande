@@ -1,0 +1,40 @@
+---
+import { loadLocais, pathOf } from '../lib/locais';
+
+const all = loadLocais();
+const pick = (slug: string) => all.find((s) => s.servico === slug);
+
+interface Card {
+  title: string;
+  text: string;
+  slug: string;
+}
+const cards: Card[] = [
+  { title: 'Quando instalar o split: o que avaliar antes', text: 'Potência (BTUs), posição da evaporadora e infraestrutura elétrica.', slug: 'instalacao-split' },
+  { title: 'Manutenção preventiva: de quanto em quanto tempo?', text: 'Rotina de limpeza e revisão que evita quebras no verão.', slug: 'manutencao-preventiva' },
+  { title: 'Ar-condicionado parou de gelar: o que fazer', text: 'Causas comuns e quando chamar um técnico.', slug: 'manutencao-corretiva' },
+  { title: 'Higienização: por que fazer e quando', text: 'Qualidade do ar, mau cheiro e economia de energia.', slug: 'limpeza-higienizacao' },
+  { title: 'Falta de gás: sinais e solução', text: 'Como identificar vazamento e recarregar com segurança.', slug: 'recarga-gas' },
+  { title: 'Manutenção recorrente para empresas: vale a pena?', text: 'Revisões periódicas que reduzem paradas e o custo com consertos.', slug: 'contrato-pmoc' },
+];
+---
+
+<section class="section-y bg-surface">
+  <div class="container-x">
+    <h2 class="h2">Dicas e guias sobre ar-condicionado</h2>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {cards.map((c) => {
+        const s = pick(c.slug);
+        return s && (
+          <li>
+            <a href={pathOf(s)} class="card block h-full">
+              <h3 class="text-lg font-semibold leading-snug text-accent-strong">{c.title}</h3>
+              <p class="mt-2 text-muted">{c.text}</p>
+              <span class="mt-3 inline-block font-semibold text-accent-strong underline underline-offset-4">Saiba mais</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

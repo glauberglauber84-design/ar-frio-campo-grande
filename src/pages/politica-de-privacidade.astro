@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { siteConfig } from '../config/siteConfig';
+import { formatAddress, formatPhone } from '../lib/format';
+import { breadcrumbLd, localBusinessLd } from '../lib/schema';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Política de privacidade', path: '/politica-de-privacidade/' },
+];
+---
+
+<BaseLayout
+  title={`Política de privacidade | ${siteConfig.name}`}
+  description={`Como a ${siteConfig.name} trata dados pessoais conforme a LGPD: o formulário envia mensagens somente pelo WhatsApp.`}
+  path="/politica-de-privacidade/"
+  jsonLd={[localBusinessLd(), breadcrumbLd(crumbs)]}
+>
+  <Breadcrumb items={crumbs} />
+  <section class="section-y">
+    <div class="container-x max-w-3xl">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Política de privacidade</h1>
+      <div class="prose-x mt-6 space-y-4">
+        <p>Esta política explica como a {siteConfig.name} trata dados pessoais, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+        <h2 class="pt-2 text-xl font-bold">Quais dados tratamos</h2>
+        <p>Este site não grava dados em servidor próprio. Ao usar o formulário de contato, nome, telefone, serviço e mensagem são usados apenas para montar uma mensagem que você envia, por sua iniciativa, pelo WhatsApp.</p>
+        <h2 class="pt-2 text-xl font-bold">Finalidade</h2>
+        <p>Responder ao seu pedido de orçamento e prestar o serviço solicitado.</p>
+        <h2 class="pt-2 text-xl font-bold">Compartilhamento</h2>
+        <p>Não vendemos nem compartilhamos seus dados. O WhatsApp e o Google Maps (mapa incorporado) possuem políticas próprias.</p>
+        <h2 class="pt-2 text-xl font-bold">Seus direitos</h2>
+        <p>Você pode solicitar acesso, correção ou exclusão dos dados que tenha nos enviado pelo WhatsApp.</p>
+        <h2 class="pt-2 text-xl font-bold">Contato</h2>
+        <p>{siteConfig.name} — {formatAddress()} — {formatPhone()}.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

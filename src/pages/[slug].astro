@@ -1,0 +1,75 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Hero from '../components/Hero.astro';
+import Faq from '../components/Faq.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import { siteConfig } from '../config/siteConfig';
+import { resolveContent } from '../lib/content';
+import { loadLocais, pathOf, slugOf } from '../lib/locais';
+import { breadcrumbLd, faqLd, localBusinessLd, serviceLd } from '../lib/schema';
+import { waLink } from '../lib/whatsapp';
+import type { Local } from '../types';
+
+export const getStaticPaths = (() =>
+  loadLocais().map((local) => ({
+    params: { slug: slugOf(local) },
+    props: { local },
+  }))) satisfies GetStaticPaths;
+
+interface Props {
+  local: Local;
+}
+const { local } = Astro.props;
+const content = resolveContent(local);
+const path = pathOf(local);
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: local.servicoLabel, path },
+];
+const msg = `Olá! Vim pelo site e gostaria de um orçamento de ${local.servicoLabel} em ${local.cidadeLabel}.`;
+---
+
+<BaseLayout
+  title={content.title}
+  description={content.description}
+  path={path}
+  jsonLd={[
+    localBusinessLd(),
+    serviceLd(local, content.description, path),
+    breadcrumbLd(crumbs),
+    faqLd(content.faq),
+  ]}
+>
+  <Breadcrumb items={crumbs} />
+  <Hero h1={content.h1} subtitle={content.hero_subtitle} waMessage={msg} secondaryHref="#bairros" secondaryLabel="Bairros atendidos" />
+
+  <section class="section-y">
+    <div class="container-x">
+      <h2 class="h2">Sobre este serviço</h2>
+      {content.sobre_texto.map((p) => <p class="prose-x mt-4">{p}</p>)}
+    </div>
+  </section>
+
+  <section id="bairros" class="section-y bg-surface">
+    <div class="container-x">
+      <h2 class="h2">Bairros atendidos em {local.cidadeLabel}</h2>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {local.bairros.map((b) => <li class="rounded-full border border-line bg-white px-4 py-2 font-semibold text-ink">{b}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <Faq items={content.faq} />
+
+  <section class="bg-brand-dark text-white">
+    <div class="container-x py-12 text-center">
+      <h2 class="text-2xl font-bold sm:text-3xl">Peça seu orçamento de {local.servicoLabel.toLowerCase()}</h2>
+      <p class="mx-auto mt-3 max-w-xl">Atendimento {siteConfig.openingHours} em {local.cidadeLabel}-{local.estado}.</p>
+      <a href={waLink(msg)} target="_blank" rel="noopener" class="btn mt-6 bg-white text-wa hover:bg-ice">Chamar no WhatsApp</a>
+    </div>
+  </section>
+
+  <ServiceGrid excludeSlug={local.servico} heading="Outros serviços" />
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FindUs from '../components/FindUs.astro';
+import { siteConfig } from '../config/siteConfig';
+import { breadcrumbLd, localBusinessLd } from '../lib/schema';
+
+const crumbs = [
+  { name: 'Home', path: '/' },
+  { name: 'Contato', path: '/contato/' },
+];
+---
+
+<BaseLayout
+  title={`Contato e orçamento | ${siteConfig.name}`}
+  description={`Fale com a ${siteConfig.name} em Campo Grande-MS: telefone, WhatsApp, endereço e formulário de orçamento.`}
+  path="/contato/"
+  jsonLd={[localBusinessLd(), breadcrumbLd(crumbs)]}
+>
+  <Breadcrumb items={crumbs} />
+  <section class="section-y">
+    <div class="container-x grid gap-8 md:grid-cols-2">
+      <div>
+        <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Contato</h1>
+        <p class="prose-x mt-4">Conte o que você precisa e abrimos o WhatsApp com a mensagem pronta.</p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+  <FindUs />
+</BaseLayout>

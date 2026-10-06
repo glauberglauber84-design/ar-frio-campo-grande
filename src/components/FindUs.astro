@@ -1,0 +1,40 @@
+---
+import { siteConfig } from '../config/siteConfig';
+import { formatAddress, formatPhone } from '../lib/format';
+import { localBusinessLd } from '../lib/schema';
+
+interface Props {
+  withSchema?: boolean;
+  headingLevel?: 'h2' | 'h3';
+}
+const { withSchema = false, headingLevel = 'h2' } = Astro.props;
+const Heading = headingLevel;
+const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(formatAddress())}&z=15&output=embed`;
+---
+
+<section id="como-nos-encontrar" class="section-y">
+  <div class="container-x grid gap-8 md:grid-cols-2">
+    <div>
+      <Heading class="h2">Como nos encontrar</Heading>
+      <address class="mt-4 space-y-3 text-lg not-italic">
+        <p>{formatAddress()}</p>
+        <p>
+          Telefone e WhatsApp:
+          <a href={`tel:${siteConfig.phoneE164}`} class="font-semibold text-accent-strong underline underline-offset-4">{formatPhone()}</a>
+        </p>
+        <p>Horário: {siteConfig.openingHours}</p>
+      </address>
+    </div>
+    <div class="overflow-hidden rounded-xl border border-line">
+      <iframe
+        title={`Mapa: ${siteConfig.name}, ${formatAddress()}`}
+        src={mapSrc}
+        width="600"
+        height="360"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        class="block h-[300px] w-full md:h-[360px]"></iframe>
+    </div>
+  </div>
+  {withSchema && <script type="application/ld+json" set:html={JSON.stringify(localBusinessLd())} />}
+</section>

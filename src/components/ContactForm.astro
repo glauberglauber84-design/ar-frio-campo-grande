@@ -1,0 +1,66 @@
+---
+import { loadLocais } from '../lib/locais';
+import { siteConfig } from '../config/siteConfig';
+
+interface Props {
+  defaultServico?: string;
+}
+const { defaultServico } = Astro.props;
+const servicos = loadLocais();
+const input =
+  'mt-1 block min-h-touch w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-base text-ink';
+---
+
+<form id="contact-form" class="space-y-4" novalidate data-wa={siteConfig.whatsappNumber}>
+  <div>
+    <label for="cf-nome" class="font-semibold">Nome</label>
+    <input id="cf-nome" name="nome" type="text" autocomplete="name" required class={input} />
+  </div>
+  <div>
+    <label for="cf-tel" class="font-semibold">Telefone</label>
+    <input id="cf-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required class={input} />
+  </div>
+  <div>
+    <label for="cf-servico" class="font-semibold">Serviço</label>
+    <select id="cf-servico" name="servico" required class={input}>
+      <option value="">Selecione um serviço</option>
+      {servicos.map((s) => <option value={s.servicoLabel} selected={s.servico === defaultServico}>{s.servicoLabel}</option>)}
+    </select>
+  </div>
+  <div>
+    <label for="cf-msg" class="font-semibold">Mensagem</label>
+    <textarea id="cf-msg" name="mensagem" rows="4" class={input}></textarea>
+  </div>
+  <button type="submit" class="btn-wa w-full sm:w-auto">Enviar pelo WhatsApp</button>
+  <p id="cf-status" role="status" class="min-h-6 font-semibold text-accent-strong"></p>
+  <p class="text-sm text-muted">Ao enviar, o WhatsApp abre com sua mensagem pronta. Nenhum dado é guardado neste site.</p>
+</form>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('cf-status');
+  if (form instanceof HTMLFormElement && status) {
+    form.addEventListener('submit', (e: SubmitEvent) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const nome = String(data.get('nome') ?? '').trim();
+      const tel = String(data.get('telefone') ?? '').trim();
+      const servico = String(data.get('servico') ?? '').trim();
+      const msg = String(data.get('mensagem') ?? '').trim();
+      if (!nome || !tel || !servico) {
+        status.textContent = 'Preencha nome, telefone e serviço para continuar.';
+        return;
+      }
+      const linhas = [
+        'Olá! Vim pelo site e gostaria de um orçamento.',
+        `Nome: ${nome}`,
+        `Telefone: ${tel}`,
+        `Serviço: ${servico}`,
+        msg ? `Mensagem: ${msg}` : '',
+      ].filter((l) => l.length > 0);
+      const url = `https://wa.me/${form.dataset.wa ?? ''}?text=${encodeURIComponent(linhas.join('\n'))}`;
+      status.textContent = 'Abrindo o WhatsApp com a sua mensagem...';
+      window.open(url, '_blank', 'noopener');
+    });
+  }
+</script>
