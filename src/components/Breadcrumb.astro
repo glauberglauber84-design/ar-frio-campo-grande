@@ -15,7 +15,7 @@ const { items } = Astro.props;
         {i === items.length - 1 ? (
           <span aria-current="page" class="font-semibold text-ink">{it.name}</span>
         ) : (
-          <a href={it.path} class="inline-flex min-h-touch items-center text-accent-strong underline underline-offset-4">{it.name}</a>
+          <a href={it.path} class="inline-flex min-h-touch min-w-touch items-center justify-center text-accent-strong underline underline-offset-4">{it.name}</a>
         )}
       </li>
     ))}

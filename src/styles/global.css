@@ -46,6 +46,18 @@
   .bg-brand-dark :focus-visible {
     outline-color: #fff;
   }
+  /* Movimento sutil: so transform/opacity, e so quando o usuario nao pediu menos movimento. */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-drift {
+      animation: hero-drift 28s linear infinite;
+      transform-origin: 50% 50%;
+    }
+  }
+  @keyframes hero-drift {
+    to {
+      transform: rotate(360deg);
+    }
+  }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
@@ -66,7 +78,7 @@
     @apply py-12 md:py-20;
   }
 @utility btn {
-    @apply inline-flex min-h-touch items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-semibold transition-colors;
+    @apply inline-flex min-h-touch items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-semibold transition-[color,background-color,transform] duration-150 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-60;
   }
 @utility btn-wa {
     @apply btn bg-wa text-white hover:bg-wa-dark;
@@ -81,11 +93,11 @@
     @apply btn border-2 border-brand-dark text-accent-strong hover:bg-brand-dark hover:text-white;
   }
 @utility card {
-    @apply rounded-xl border border-line bg-white p-5 shadow-sm transition-shadow hover:shadow-md;
+    @apply rounded-xl border border-line bg-white p-6 shadow-sm transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-md;
   }
 @utility h2 {
-    @apply text-2xl font-bold leading-tight tracking-tight text-ink sm:text-3xl;
+    @apply text-2xl font-bold tracking-tight text-ink sm:text-3xl;
   }
 @utility prose-x {
-    @apply max-w-prose text-lg text-ink;
+    @apply max-w-prose text-base text-ink sm:text-lg;
   }

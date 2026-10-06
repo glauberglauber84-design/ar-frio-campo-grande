@@ -8,27 +8,29 @@ interface Props {
 const { defaultServico } = Astro.props;
 const servicos = loadLocais();
 const input =
-  'mt-1 block min-h-touch w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-base text-ink';
+  'mt-1 block min-h-touch w-full rounded-lg border border-slate-500 bg-white px-3 py-2 text-base text-ink transition-colors hover:border-ink focus:border-brand-dark';
+const label = 'block font-semibold text-ink';
+const hint = 'font-normal text-muted';
 ---
 
 <form id="contact-form" class="space-y-4" novalidate data-wa={siteConfig.whatsappNumber}>
   <div>
-    <label for="cf-nome" class="font-semibold">Nome</label>
+    <label for="cf-nome" class={label}>Nome <span class={hint}>(obrigatório)</span></label>
     <input id="cf-nome" name="nome" type="text" autocomplete="name" required class={input} />
   </div>
   <div>
-    <label for="cf-tel" class="font-semibold">Telefone</label>
+    <label for="cf-tel" class={label}>Telefone <span class={hint}>(obrigatório)</span></label>
     <input id="cf-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required class={input} />
   </div>
   <div>
-    <label for="cf-servico" class="font-semibold">Serviço</label>
+    <label for="cf-servico" class={label}>Serviço <span class={hint}>(obrigatório)</span></label>
     <select id="cf-servico" name="servico" required class={input}>
       <option value="">Selecione um serviço</option>
       {servicos.map((s) => <option value={s.servicoLabel} selected={s.servico === defaultServico}>{s.servicoLabel}</option>)}
     </select>
   </div>
   <div>
-    <label for="cf-msg" class="font-semibold">Mensagem</label>
+    <label for="cf-msg" class={label}>Mensagem <span class={hint}>(opcional)</span></label>
     <textarea id="cf-msg" name="mensagem" rows="4" class={input}></textarea>
   </div>
   <button type="submit" class="btn-wa w-full sm:w-auto">Enviar pelo WhatsApp</button>
