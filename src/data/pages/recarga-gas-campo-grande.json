@@ -1,0 +1,28 @@
+{
+  "title": "Recarga de Gás de Ar-Condicionado em Campo Grande",
+  "description": "Recarga de gás de ar-condicionado em Campo Grande, MS, com teste de vazamento antes. Evite pagar duas vezes pelo mesmo problema. Peça orçamento.",
+  "h1": "Recarga de gás de ar-condicionado em Campo Grande",
+  "hero_subtitle": "Primeiro achamos o vazamento, depois recarregamos. Gás que some sem motivo não existe.",
+  "sobre_texto": [
+    "Ar-condicionado não consome gás. O fluido circula em circuito fechado, então, se faltou, vazou. Recarregar sem procurar o ponto de fuga resolve por algumas semanas e depois o problema volta, com você pagando de novo. Por isso o serviço começa com medição de pressão, teste com nitrogênio ou detector e inspeção das conexões e das flanges. Só depois vem o gás.",
+    "Chamados de falta de gás aparecem bastante no Monte Castelo, no Tiradentes, no Coronel Antonino e na Vila Carvalho, onde há muito aparelho mais antigo. Também atendemos Amambaí, Centro, Jardim dos Estados e Santa Fé. O tipo de gás varia: R22 em modelos antigos, R410A e R32 nos atuais, e cada um tem custo próprio. O preço final depende do gás, da quantidade e de quanto trabalho dá reparar o vazamento. Descreva o aparelho no WhatsApp e passamos a faixa."
+  ],
+  "faq": [
+    {
+      "pergunta": "Quanto custa uma recarga de gás?",
+      "resposta": "Depende do tipo de gás, da quantidade e de haver vazamento a reparar. Gás R22 é mais caro e mais difícil de achar que R410A ou R32. Não passamos valor fechado antes do diagnóstico. Peça uma estimativa pelo WhatsApp com a marca e o modelo. O orçamento sai no mesmo dia. Fazemos o teste de vazamento e damos garantia do serviço realizado."
+    },
+    {
+      "pergunta": "Quanto tempo leva o serviço?",
+      "resposta": "Sem vazamento, a recarga costuma ser rápida, em geral dentro de uma visita. Com vazamento, é preciso localizar, soldar ou trocar a conexão, testar e só então carregar, o que leva mais tempo. A visita depende da agenda."
+    },
+    {
+      "pergunta": "Como sei se meu ar está com pouco gás?",
+      "resposta": "Os sinais mais comuns são ar que sopra pouco frio, gelo na tubulação fina ou na unidade interna, e compressor ligado o tempo todo sem resfriar. Esses sintomas também podem vir de filtro sujo ou defeito elétrico, por isso a medição é necessária."
+    },
+    {
+      "pergunta": "Posso só completar o gás e ver se resolve?",
+      "resposta": "Não recomendamos. Se há vazamento, o gás novo escapa de novo, e ainda se descarta fluido refrigerante na atmosfera. Localizar o ponto e consertar custa menos no fim das contas."
+    }
+  ]
+}
