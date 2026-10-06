@@ -20,7 +20,7 @@ const mapSrc = `https://www.google.com/maps?q=${encodeURIComponent(formatAddress
         <p>{formatAddress()}</p>
         <p>
           Telefone e WhatsApp:
-          <a href={`tel:${siteConfig.phoneE164}`} class="font-semibold text-accent-strong underline underline-offset-4">{formatPhone()}</a>
+          <a href={`tel:${siteConfig.phoneE164}`} class="inline-flex min-h-touch items-center font-semibold text-accent-strong underline underline-offset-4">{formatPhone()}</a>
         </p>
         <p>Horário: {siteConfig.openingHours}</p>
       </address>

@@ -36,7 +36,7 @@ const year = new Date().getFullYear();
       <address class="mt-3 space-y-2 not-italic">
         <p>{formatAddress()}</p>
         <p>
-          <a href={`tel:${siteConfig.phoneE164}`} class="font-semibold text-white underline underline-offset-4">{formatPhone()}</a>
+          <a href={`tel:${siteConfig.phoneE164}`} class="inline-flex min-h-touch items-center font-semibold text-white underline underline-offset-4">{formatPhone()}</a>
         </p>
         <p>{siteConfig.openingHours}</p>
       </address>
