@@ -1,0 +1,156 @@
+[
+  {
+    "servico": "instalacao-split",
+    "servicoLabel": "Instalação de Ar-Condicionado Split",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "servicoPrincipal": true,
+    "bairros": [
+      "Centro",
+      "Jardim dos Estados",
+      "Carandá Bosque",
+      "Chácara Cachoeira",
+      "Santa Fé",
+      "Vila Carvalho",
+      "Jardim Veraneio",
+      "Monte Castelo",
+      "Vila Glória",
+      "Tiradentes"
+    ]
+  },
+  {
+    "servico": "manutencao-preventiva",
+    "servicoLabel": "Manutenção Preventiva de Ar-Condicionado",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Centro",
+      "Jardim dos Estados",
+      "Vila Glória",
+      "Amambaí",
+      "Santa Fé",
+      "Coronel Antonino",
+      "Jardim Veraneio",
+      "Monte Castelo",
+      "Vila Carvalho"
+    ]
+  },
+  {
+    "servico": "manutencao-corretiva",
+    "servicoLabel": "Manutenção Corretiva e Conserto de Ar-Condicionado",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Tiradentes",
+      "Vila Carvalho",
+      "Monte Castelo",
+      "Coronel Antonino",
+      "Jardim Veraneio",
+      "Amambaí",
+      "Centro",
+      "Santa Fé",
+      "Vila Glória",
+      "Carandá Bosque"
+    ]
+  },
+  {
+    "servico": "limpeza-higienizacao",
+    "servicoLabel": "Limpeza e Higienização de Ar-Condicionado",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Chácara Cachoeira",
+      "Carandá Bosque",
+      "Jardim dos Estados",
+      "Santa Fé",
+      "Vila Glória",
+      "Centro",
+      "Tiradentes",
+      "Jardim Veraneio",
+      "Amambaí"
+    ]
+  },
+  {
+    "servico": "recarga-gas",
+    "servicoLabel": "Recarga de Gás de Ar-Condicionado",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Monte Castelo",
+      "Tiradentes",
+      "Coronel Antonino",
+      "Vila Carvalho",
+      "Amambaí",
+      "Centro",
+      "Jardim dos Estados",
+      "Santa Fé"
+    ]
+  },
+  {
+    "servico": "troca-pecas",
+    "servicoLabel": "Troca de Peças de Ar-Condicionado (Placa, Compressor, Capacitor)",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Vila Carvalho",
+      "Coronel Antonino",
+      "Tiradentes",
+      "Monte Castelo",
+      "Centro",
+      "Jardim Veraneio",
+      "Amambaí",
+      "Vila Glória",
+      "Carandá Bosque"
+    ]
+  },
+  {
+    "servico": "desinstalacao-reinstalacao",
+    "servicoLabel": "Desinstalação e Reinstalação de Ar-Condicionado (Mudança)",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Jardim dos Estados",
+      "Chácara Cachoeira",
+      "Carandá Bosque",
+      "Santa Fé",
+      "Centro",
+      "Vila Glória",
+      "Tiradentes",
+      "Monte Castelo",
+      "Jardim Veraneio",
+      "Vila Carvalho"
+    ]
+  },
+  {
+    "servico": "contrato-pmoc",
+    "servicoLabel": "Contrato de Manutenção para Empresas (PMOC)",
+    "cidade": "campo-grande",
+    "cidadeLabel": "Campo Grande",
+    "estado": "MS",
+    "principal": true,
+    "bairros": [
+      "Centro",
+      "Jardim dos Estados",
+      "Vila Glória",
+      "Santa Fé",
+      "Amambaí",
+      "Jardim Veraneio",
+      "Chácara Cachoeira",
+      "Coronel Antonino"
+    ]
+  }
+]
